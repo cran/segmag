@@ -1,7 +1,7 @@
 Package: segmag
 Type: Package
-Version: 1.2.2
-Date: 2014-10-06
+Version: 1.2.3
+Date: 2016-08-10
 Title: Determine Event Boundaries in Event Segmentation Experiments
 Maintainer: Frank Papenmeier <frank.papenmeier@uni-tuebingen.de>
 Author: Frank Papenmeier [aut, cre],
@@ -9,7 +9,7 @@ Author: Frank Papenmeier [aut, cre],
 Authors@R: c(person("Frank","Papenmeier", role=c("aut","cre"),
     email="frank.papenmeier@uni-tuebingen.de"),
     person("Konstantin","Sering", role="ctb"))
-Description: This package contains functions that help to determine event
+Description: Contains functions that help to determine event
     boundaries in event segmentation experiments by bootstrapping a critical
     segmentation magnitude under the null hypothesis that all key presses were
     randomly distributed across the experiment. Segmentation magnitude is
@@ -21,9 +21,10 @@ Description: This package contains functions that help to determine event
     as plotting the results.
 License: GPL (>= 3)
 Suggests: testthat
-Imports: Rcpp (>= 0.11.0)
+Imports: Rcpp (>= 0.11.0), utils, stats, grDevices, graphics
 LinkingTo: Rcpp
-Packaged: 2014-10-06 15:55:49 UTC; fpapenmeier
+RoxygenNote: 5.0.1
 NeedsCompilation: yes
+Packaged: 2016-08-10 11:32:17 UTC; fpapenmeier
 Repository: CRAN
-Date/Publication: 2014-10-17 10:30:45
+Date/Publication: 2016-08-10 14:12:17

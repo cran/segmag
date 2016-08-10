@@ -1,5 +1,9 @@
 #' @useDynLib segmag
 #' @importFrom Rcpp evalCpp
+#' @importFrom grDevices dev.off png
+#' @importFrom graphics abline plot points
+#' @importFrom stats dnorm quantile runif
+#' @importFrom utils setTxtProgressBar txtProgressBar
 NULL
 
 #' Create Segmentation Object
@@ -71,7 +75,7 @@ NULL
 #' @export
 segmag <- function(ids, time_keypresses, data = NULL, time_min = (min(min(time_keypresses),(min(time_keypresses)+gauss_offset))-gauss_cutoff), time_max = (max(max(time_keypresses),(max(time_keypresses)+gauss_offset))+gauss_cutoff), time_steps = 0.01, gauss_offset = 0, gauss_sd = 1, gauss_cutoff = 6 * gauss_sd)
 {
-  # Überlegen.. wie sicherstellen dass bei bootstrap nicht keypresses an zeiten platziert werden, die dann verloren gehen, da über cutoff verschoben werden?
+  # Ueberlegen.. wie sicherstellen dass bei bootstrap nicht keypresses an zeiten platziert werden, die dann verloren gehen, da ueber cutoff verschoben werden?
   # indexes calculated in c notation! 0..i-1
   #gauss_cutoff: # computational cutoff because almost 0.. einseitig, also je cutoff nach links und cutoff nach rechts
   
@@ -116,7 +120,7 @@ segmag <- function(ids, time_keypresses, data = NULL, time_min = (min(min(time_k
     warning(paste0("gauss_offset was changed to ",(indexes_gauss_offset * time_steps)," such that it is a multiple of time_steps"))
   }
   
-  # Gauss Array geht von 0 (linker Rand) über 0 + gauss_n_indexes_per_side (Maximum) bis 0 + gauss_n_indexes_per_side + gauss_n_indexes_per_side (rechter Rand)
+  # Gauss Array geht von 0 (linker Rand) ueber 0 + gauss_n_indexes_per_side (Maximum) bis 0 + gauss_n_indexes_per_side + gauss_n_indexes_per_side (rechter Rand)
   # Gauss Array ist also gauss_n_indexes_per_side * 2 + 1 lang
   gauss_n_indexes_per_side <- ceiling(gauss_cutoff / time_steps)
   

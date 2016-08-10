@@ -19,7 +19,7 @@
 #' cutoffs of a difference function of two segmag objects. To do so, segmag and
 #' segmag_substract must be defined. All values will be related to the difference
 #' of segmag - segmag_substract (Keypress times in segmag and segmag_substract are
-#' randomizes independently).
+#' randomized independently).
 #' 
 #' @param segmag object of class \code{\link{segmag}}
 #' @param n_bootstrap numeric, number of bootstrap iterations
