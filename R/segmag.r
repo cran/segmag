@@ -104,6 +104,13 @@ segmag <- function(ids, time_keypresses, data = NULL, time_min = (min(min(time_k
   if (! (time_max > time_min)) stop("time_max must be greater than time_min")
   if (! time_steps > 0) stop("time_steps must be greater than 0")
   
+  time_min_orig <- time_min
+  time_min <- plyr::round_any(time_min_orig, time_steps)
+  
+  if (time_min != time_min_orig )
+  {
+    warning(paste0("time_min was changed to ",time_min," such that it is a multiple of time_steps"))
+  }
   
   index_time_max <- round((time_max - time_min) / time_steps)
   

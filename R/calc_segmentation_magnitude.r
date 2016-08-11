@@ -18,17 +18,23 @@ calc_segmentation_magnitude <- function(segmag)
     calc_segmentation_magnitude_impl(segmentation_magnitude_overall,index_keypresses,segmag$gauss_values,segmag$gauss_n_indexes_per_side,segmag$indexes_gauss_offset)
   }
   
-  # as.numeric(as.character()): Fix floating point issue causing problems in addressing specific time points
+  # as.numeric(as.character()) and plyr::round_any: Fix floating point issue causing problems in addressing specific time points (round_any and as.numeric(as.character()) fix different occurances of the issue)
   # Example:
   # tmp <- segmag(factor(c(1)),c(0),gauss_sd = 0.8)
   # tmp$data$segmentation_magnitude[tmp$data$time==0.00]
   # Before Fix returns: numeric(0)
   # After Fix returns: [1] 0.4986779
   return( data.frame(
-    time=as.numeric(as.character(seq(
-      as.numeric(as.character( segmag$time_min )),
-      as.numeric(as.character( segmag$time_min + (segmag$index_time_max*segmag$time_steps) )),
-      as.numeric(as.character( segmag$time_steps ))
-      ))),
-    segmentation_magnitude=segmentation_magnitude_overall) )
+    time=as.numeric(as.character(
+      plyr::round_any(
+        seq(
+          segmag$time_min,
+          segmag$time_min + (segmag$index_time_max*segmag$time_steps),
+          segmag$time_steps
+        ),
+        segmag$time_steps
+      )
+    )),
+    segmentation_magnitude=segmentation_magnitude_overall)
+  )
 }

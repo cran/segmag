@@ -1,3 +1,10 @@
+segmag v1.2.4 (Release date: 2016-08-11)
+==============
+
+Changes:
+
+* New fix for floating point issue because last fix did not work in some circumstances
+
 segmag v1.2.3 (Release date: 2016-08-10)
 ==============
 
